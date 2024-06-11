@@ -2,6 +2,7 @@ package br.unifor.trabalhoacademianovo;
 
 import br.unifor.trabalhoacademianovo.model.Aluno;
 import br.unifor.trabalhoacademianovo.service.AlunoService;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -29,5 +30,13 @@ public class MatriculaFacade {
 
     public Aluno obterDetalhesAluno(int id) {
         return alunoService.obterDetalhesAluno(id);
+    }
+
+    public List<Aluno> listarAlunos() {
+        return alunoService.listarAlunos();
+    }
+
+    public void removerAluno(int id) {
+        alunoService.removerAluno(id);
     }
 }

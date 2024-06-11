@@ -2,6 +2,7 @@ package br.unifor.trabalhoacademianovo.service;
 
 import br.unifor.trabalhoacademianovo.model.Aluno;
 import br.unifor.trabalhoacademianovo.repository.AlunoRepositorio;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.List;
 public class AlunoService {
     private final AlunoRepositorio repositorio;
 
+    @Autowired
     public AlunoService(AlunoRepositorio repositorio) {
         this.repositorio = repositorio;
     }
@@ -39,5 +41,7 @@ public class AlunoService {
         repositorio.deleteById(id);
     }
 
-   
+    public Aluno obterDetalhesAluno(int id) {
+        return repositorio.findById(id).orElseThrow(() -> new RuntimeException("Aluno não encontrado"));
+    }
 }
